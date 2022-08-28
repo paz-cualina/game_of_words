@@ -40,10 +40,16 @@ p {
     font-family: 'Caveat', cursive;
 }
 
+p#clue {
+    font-family: monospace;
+    font-size: 16px;
+    color: #6ee37c;
+}
+
 .btn-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 120px;
+    margin-top: 90px;
 }
 
 button {

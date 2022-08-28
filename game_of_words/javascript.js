@@ -1,14 +1,36 @@
-//const groupWords = [["eco", "seco", "cesto"], ["ave", "leal", "valle"]];
-const groupWords = ["eco", "seco", "cesto"];
+const groups = [
+    {
+        letters: ["E", "O", "S", "T", "C"],
+        words: ["eco", "seco", "cesto"]
+    },
+    {
+        letters: ["L", "V", "A", "E", "L"],
+        words: ["ave", "leal", "valle"]
+    },
+    {
+        letters: ["E", "T", "R", "N", "F", "E"],
+        words: ["ten", "tren", "tener", "frente"]
+    }
+];
 
-function guessWord(word, tries) {
-    let guess = prompt("¿Cuál es la palabra? Es una palabra de " + word.length + " letras y las letras disponibles son: E O S T C.");
+// Busco un grupo de palabras aleatorio dentro del objeto
+const randomGroup = Math.floor(Math.random() * groups.length);
+const groupWords = groups[randomGroup];
+
+// Busco una palabra aleatoria dentro del grupo seleccionado
+let randomWord = groupWords.words[Math.floor(Math.random() * groupWords.words.length)];
+document.getElementById("clue").innerHTML =
+    "¡Ya comenzó! Es una palabra de " + randomWord.length + " letras y las letras disponibles son: " + groupWords.letters.join(" - ") + ".";
+
+function guessWord(tries) {
+    let guess = prompt("Escribe la palabra");
     if (guess == null) {
-        return true; //para poder cancelar
+        return true; 
     }
 
-    if (word === guess) {
-        alert ("¡Felicitaciones " + guess + " es la palabra correcta!");
+    if (randomWord === guess) {
+        alert("¡Felicitaciones " + guess + " es la palabra correcta!");
+        document.getElementById("clue").innerHTML = "¡Has ganado!";
 
         return true;
     } else {
@@ -23,13 +45,10 @@ function guessWord(word, tries) {
 }
 
 function play() {
-    const randomWord = groupWords[Math.floor(Math.random() * groupWords.length)];
     for (let i = 2; i >= 0; i--) {
-        let success = guessWord(randomWord, i);
+        let success = guessWord(i);
         if (success) {
             break;
         }
     }
 }
-
-play();
