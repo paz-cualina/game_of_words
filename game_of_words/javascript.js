@@ -28,7 +28,7 @@ function guessWord(tries) {
         return true; 
     }
 
-    if (randomWord === guess) {
+    if (randomWord.toLowerCase() === guess.toLowerCase()) {
         alert("¡Felicitaciones " + guess + " es la palabra correcta!");
         document.getElementById("clue").innerHTML = "¡Has ganado!";
 
@@ -52,3 +52,22 @@ function play() {
         }
     }
 }
+
+
+//Animación de reloj de arena
+let btnPlay = document.getElementById("btnGuess"),
+    imgSandglass = document.getElementById("sandglass"),
+    counter = 0;
+
+    function rotate() {
+        if (counter == 0) {
+            sandglass.classList.add("icon-rotate");
+            counter = 1;
+        }   
+        else {
+            sandglass.classList.remove("icon-rotate");
+            counter = 0;
+        }
+    }
+
+    btnGuess.addEventListener("click", rotate ,true)

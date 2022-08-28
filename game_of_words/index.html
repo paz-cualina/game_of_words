@@ -9,14 +9,17 @@
 </head>
 <body>
     <div class="wrapper-container">
-        <figure>
+        <figure class="logo">
             <img src="img/question.png">   
         </figure>
         <h1>GAME OF WORDS</h1>
-        <p>Un juego para adivinar palabras</p>
+        <h2>Un juego para adivinar palabras</h2>
         <p id="clue"></p>
+        <figure class="icon-sandglass">
+            <img id="sandglass" class="icon" src="img/sandglass.png">   
+        </figure>
         <div class="btn-wrapper">
-            <button type="button" onclick="play()">¡ADIVINAR!</button>
+            <button id="btnGuess" type="button" onclick="play()">¡ADIVINAR!</button>
         </div>
     </div>
     <script src="javascript.js">

@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: monospace;
 }
 
 .wrapper-container {
@@ -13,26 +14,25 @@
     flex-direction: column;
 }
 
-figure {
+figure.logo {
     display: flex;
     justify-content: center;
     width: 100%;
     padding-top: 125px;
 }
 
-img {
+.logo img {
     width: 85px;
 }
 
 h1 {
     color: #fff;
-    font-size: 70px;
+    font-size: 65px;
     text-align: center;
     padding-top: 30px;
-    font-family: monospace;
 }
 
-p {
+h2 {
     color: #ccc;
     font-size: 30px;
     text-align: center;
@@ -41,15 +41,38 @@ p {
 }
 
 p#clue {
-    font-family: monospace;
     font-size: 16px;
+    text-align: center;
     color: #6ee37c;
+    max-width: 610px;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 15px;
+    border: 2px solid;
+    border-radius: 12px;
+}
+
+.icon-sandglass {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px
+}
+
+.icon {
+    width: 60px;
+    cursor: pointer;
+}
+
+.icon.icon-rotate {
+    transform: rotateX(180deg);
+    transition: all ease .3s;
 }
 
 .btn-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 90px;
+    margin-top: 25px;
 }
 
 button {
@@ -58,7 +81,6 @@ button {
     color: #000;
     border: 2px solid #000;
     font-size: 16px;
-    font-family: monospace;
     font-weight: 600;
     text-align: center;
     padding: 6px 12px;
