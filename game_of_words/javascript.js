@@ -54,7 +54,7 @@ function play() {
 }
 
 
-//Animación de reloj de arena
+// Animación de reloj de arena
 let btnPlay = document.getElementById("btnGuess"),
     imgSandglass = document.getElementById("sandglass"),
     counter = 0;
@@ -70,4 +70,4 @@ let btnPlay = document.getElementById("btnGuess"),
         }
     }
 
-    btnGuess.addEventListener("click", rotate ,true)
+    btnGuess.addEventListener("click", rotate, true)

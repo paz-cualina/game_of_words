@@ -6,10 +6,20 @@
     font-family: monospace;
 }
 
-.wrapper-container {
-    background-color: #000;
+body {
+    background-image: url(./img/background-body.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.7;
     width: 100%;
     height: 100vh;
+}
+
+.wrapper-container {
+    background-color: #000;
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -26,7 +36,10 @@ figure.logo {
 }
 
 h1 {
-    color: #fff;
+    color: transparent;
+    background: linear-gradient(#6ee37c, #6b8323);
+    background-clip: text;
+    -webkit-background-clip: text;
     font-size: 65px;
     text-align: center;
     padding-top: 30px;
@@ -43,13 +56,25 @@ h2 {
 p#clue {
     font-size: 16px;
     text-align: center;
-    color: #6ee37c;
+    color: #6b8323;
+    background: #0f0f0f;
     max-width: 610px;
     margin: 0 auto;
     margin-top: 40px;
     padding: 15px;
-    border: 2px solid;
-    border-radius: 12px;
+    border: 4px solid;
+    border-image-source: linear-gradient(to right, #6ee37c, #6b8323);
+    border-image-slice: 1;
+    animation: border 5s linear infinite;
+}
+
+@keyframes border {
+    0 % {
+        border-image-source: linear-gradient(to right, #6ee37c, #6b8323);
+    }
+    100% {
+        border-image-source: linear-gradient(to right, #6b8323, #6ee37c);
+    }
 }
 
 .icon-sandglass {
@@ -72,24 +97,25 @@ p#clue {
 .btn-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
 button {
     width: 180px;
-    background: #fff;
-    color: #000;
-    border: 2px solid #000;
+    background: #000;
+    border: 2px solid #fff;
+    color: #fff;
     font-size: 16px;
     font-weight: 600;
     text-align: center;
     padding: 6px 12px;
     border-radius: 20px;
     cursor: pointer;
+    transition: all ease .3s;
 }
 
 button:hover {
-    background: #000;
+    background: #fff;
+    color: #000;
     border: 2px solid #fff;
-    color: #fff;
 }
