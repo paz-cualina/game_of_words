@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Inter:wght@100;200;400;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Covered+By+Your+Grace&family=Inter:wght@100;200;400;600;900&display=swap');
 
 * {
     margin: 0;
@@ -12,30 +12,55 @@ body {
     background-position: center;
     opacity: 0.7;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 .wrapper-container {
-    background-color: #000;
-    opacity: 0.9;
+    background-color: #00000087;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-bottom: 150px;
 }
+
+.main-title {
+    margin-bottom: 60px;
+}
+
+.main-title .chain-left {
+    width: 20px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    filter: brightness(0.5);
+    z-index: 10;
+}
+
+.main-title .chain-right {
+    width: 20px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    right: 30%;
+    filter: brightness(0.5);
+    z-index: 10;
+}
+
 
 figure.logo {
     display: flex;
     justify-content: center;
     width: 100%;
-    padding-top: 125px;
+    padding-top: 100px;
 }
 
 .logo img {
     width: 85px;
 }
 
-h1 {
+.main-title h1 {
     color: transparent;
     background: linear-gradient(#6ee37c, #6b8323);
     background-clip: text;
@@ -45,36 +70,31 @@ h1 {
     padding-top: 30px;
 }
 
-h2 {
+.main-title h2 {
     color: #ccc;
-    font-size: 30px;
+    font-size: 28px;
     text-align: center;
-    padding-top: 30px;
-    font-family: 'Caveat', cursive;
+    padding-top: 10px;
+    font-family: 'Covered By Your Grace', cursive;
+    text-shadow: 3px 4px 5px #000;
+}
+
+.wrapper-guess {
+    background: #000;
+    max-width: 610px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 40px;
+    border: 4px solid #565656;
+    box-shadow: 0 0 30px 11px #000;
+    position: relative;
+    z-index: 0;
 }
 
 p#clue {
     font-size: 16px;
     text-align: center;
     color: #6b8323;
-    background: #0f0f0f;
-    max-width: 610px;
-    margin: 0 auto;
-    margin-top: 40px;
-    padding: 15px;
-    border: 4px solid;
-    border-image-source: linear-gradient(to right, #6ee37c, #6b8323);
-    border-image-slice: 1;
-    animation: border 5s linear infinite;
-}
-
-@keyframes border {
-    0 % {
-        border-image-source: linear-gradient(to right, #6ee37c, #6b8323);
-    }
-    100% {
-        border-image-source: linear-gradient(to right, #6b8323, #6ee37c);
-    }
 }
 
 .icon-sandglass {
@@ -96,11 +116,12 @@ p#clue {
 
 .btn-wrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     margin-top: 20px;
+    margin: 0 auto;
 }
 
-button {
+.btn-wrapper button {
     width: 180px;
     background: #000;
     border: 2px solid #fff;
@@ -108,14 +129,54 @@ button {
     font-size: 16px;
     font-weight: 600;
     text-align: center;
-    padding: 6px 12px;
+    padding: 8px 12px;
     border-radius: 20px;
     cursor: pointer;
     transition: all ease .3s;
+    margin-top: 20px;
 }
 
-button:hover {
+.btn-wrapper button:hover {
     background: #fff;
     color: #000;
     border: 2px solid #fff;
+}
+
+/*Responsive*/
+
+@media only screen and (min-width: 1900px) {
+    .main-title .chain-left { 
+        left: 34%;
+    }
+    .main-title .chain-right { 
+        right: 34%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    figure.logo {
+        padding-top: 80px;
+    }
+    .logo img {
+        width: 60px;
+    }
+    .main-title h2 {
+        font-size: 23px;
+    }
+    .main-title .chain-left,
+    .main-title .chain-right { height: 348px; }
+    .wrapper-guess {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .main-title .chain-left { 
+        height: 425px; 
+        left: 15%;
+    }
+    .main-title .chain-right { 
+        height: 425px; 
+        right: 15%;
+    }
 }

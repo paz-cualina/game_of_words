@@ -9,16 +9,22 @@
 </head>
 <body>
     <div class="wrapper-container">
-        <figure class="logo">
-            <img src="img/question.png">   
-        </figure>
-        <h1>GAME OF WORDS</h1>
-        <h2>Un juego para adivinar palabras</h2>
-        <p id="clue"></p>
-        <figure class="icon-sandglass">
-            <img id="sandglass" class="icon" src="img/sandglass.png">   
-        </figure>
+        <div class="main-title">
+            <figure class="logo">
+                <img src="img/question.png">   
+            </figure>
+            <h1>GAME OF WORDS</h1>
+            <h2>Un juego para adivinar palabras</h2>
+            <img src="img/chain.png" class="chain-left">
+            <img src="img/chain.png" class="chain-right">
+        </div>
+        <div class="wrapper-guess">
+            <p id="clue"></p>
+        </div>  
         <div class="btn-wrapper">
+            <figure class="icon-sandglass">
+                <img id="sandglass" class="icon" src="img/sandglass.png">   
+            </figure>
             <button id="btnGuess" type="button" onclick="play()">¡ADIVINAR!</button>
         </div>
     </div>
