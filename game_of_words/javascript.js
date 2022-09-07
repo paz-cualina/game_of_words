@@ -13,46 +13,56 @@ const groups = [
     }
 ];
 
-// Busco un grupo de palabras aleatorio dentro del objeto
-const randomGroup = Math.floor(Math.random() * groups.length);
-const groupWords = groups[randomGroup];
+let groupWords;
+let randomWord;
+let randomGroup;
+let globalTries;
 
-// Busco una palabra aleatoria dentro del grupo seleccionado
-let randomWord = groupWords.words[Math.floor(Math.random() * groupWords.words.length)];
-document.getElementById("clue").innerHTML =
-    "¡Ya comenzó! Es una palabra de " + randomWord.length + " letras y las letras disponibles son: " + groupWords.letters.join(" - ") + ".";
+document.getElementById("clue").innerHTML = "¡BIENVENIDO! Haz click en nuevo juego para iniciar la partida";
 
-function guessWord(tries) {
-    let guess = prompt("Escribe la palabra");
+function start() {
+    // Busco un grupo de palabras aleatorio dentro del objeto
+    randomGroup = Math.floor(Math.random() * groups.length);
+    groupWords = groups[randomGroup];
+    globalTries = 2;
+
+    // Busco una palabra aleatoria dentro del grupo seleccionado
+    randomWord = groupWords.words[Math.floor(Math.random() * groupWords.words.length)];
+    document.getElementById("clue").innerHTML =
+        "¡Ya comenzó! Es una palabra de " + randomWord.length + " letras y las letras disponibles son: " + groupWords.letters.join(" - ") + ".";
+
+    document.getElementById("btnGuess").hidden = false;
+    document.getElementById("btnStart").hidden = true;
+    document.getElementById("text-congratulation").innerHTML = "";
+    document.getElementById("write-answer").value = "";
+    document.getElementById("text-tries").innerHTML = "";
+}
+
+function guessWord() {
+    let guess = document.getElementById("write-answer").value;
     if (guess == null) {
-        return true; 
+        return;
     }
 
     if (randomWord.toLowerCase() === guess.toLowerCase()) {
-        alert("¡Felicitaciones " + guess + " es la palabra correcta!");
+        document.getElementById("text-congratulation").innerHTML = "¡Felicitaciones " + guess + " es la palabra correcta!";
         document.getElementById("clue").innerHTML = "¡Has ganado!";
-
-        return true;
+        document.getElementById("text-tries").innerHTML = "";
+        document.getElementById("btnGuess").hidden = true;
+        document.getElementById("btnStart").hidden = false;
     } else {
-        if (tries == 0) {
-            alert("¡Te has quedado sin intentos! Solicitá una palabra nueva para continuar jugando");
+        if (globalTries == 0) {
+            document.getElementById("text-tries").innerHTML = "¡Te has quedado sin intentos! Solicitá una palabra nueva para continuar jugando";
+            document.getElementById("btnGuess").hidden = true;
+            document.getElementById("btnStart").hidden = false;
+            document.getElementById("write-answer").value = "";
         } else {
-            alert ("¡Upss! Parece que no es la palabra correcta. ¡Probá de nuevo! Te quedan " + tries + " intentos");
-        }
-
-        return false;
-    }
-}
-
-function play() {
-    for (let i = 2; i >= 0; i--) {
-        let success = guessWord(i);
-        if (success) {
-            break;
+            document.getElementById("text-tries").innerHTML = "¡Upss! Parece que no es la palabra correcta. ¡Probá de nuevo! Te quedan " + globalTries + " intentos";
         }
     }
-}
 
+    globalTries = globalTries - 1;
+}
 
 // Animación de reloj de arena
 let btnPlay = document.getElementById("btnGuess"),
@@ -61,13 +71,20 @@ let btnPlay = document.getElementById("btnGuess"),
 
     function rotate() {
         if (counter == 0) {
-            sandglass.classList.add("icon-rotate");
+            imgSandglass.classList.add("icon-rotate");
             counter = 1;
         }   
         else {
-            sandglass.classList.remove("icon-rotate");
+            imgSandglass.classList.remove("icon-rotate");
             counter = 0;
         }
     }
 
-    btnGuess.addEventListener("click", rotate, true)
+// Enter input
+btnGuess.addEventListener("click", rotate, true);
+document.getElementById("write-answer").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        guessWord();
+    }
+});

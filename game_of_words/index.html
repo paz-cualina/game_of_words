@@ -19,16 +19,21 @@
             <img src="img/chain.png" class="chain-right">
         </div>
         <div class="wrapper-guess">
+            <p id="text-congratulation"></p>
             <p id="clue"></p>
         </div>  
-        <div class="btn-wrapper">
+        <div class="inputs-wrapper">
             <figure class="icon-sandglass">
                 <img id="sandglass" class="icon" src="img/sandglass.png">   
             </figure>
-            <button id="btnGuess" type="button" onclick="play()">¡ADIVINAR!</button>
-        </div>
+            <div class="btn-wrapper">
+                <input id="write-answer" type="text" name="fname" class="guess-word" placeholder="Escribe tu respuesta aquí...">
+                <input id="btnGuess" type="button" onclick="guessWord()" value="¡ADIVINAR!" hidden></input>
+                <input id="btnStart" type="button" onclick="start()" value="¡NUEVO JUEGO!"></input>
+            </div>
+            <p id="text-tries"></p>
+        </div>  
     </div>
-    <script src="javascript.js">
-    </script>
+    <script src="javascript.js"></script>
 </body>
 </html>
