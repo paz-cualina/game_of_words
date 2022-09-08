@@ -91,8 +91,7 @@ figure.logo {
     z-index: 0;
 }
 
-p#clue,
-p#text-congratulation {
+.wrapper-guess p {
     font-size: 16px;
     text-align: center;
     color: #6b8323;
@@ -113,6 +112,7 @@ p#text-congratulation {
     background: transparent;
     box-shadow: 0 0 30px 11px #000;
     text-align: left;
+    color: #fff !important;
 }
 
 .btn-wrapper input.guess-word:hover {
@@ -127,7 +127,7 @@ p#text-congratulation {
     margin-top: 40px
 }
 
-.icon {
+.icon-sandglass .icon {
     width: 55px;
 }
 
@@ -160,16 +160,20 @@ p#text-congratulation {
 
 .inputs-wrapper input:hover {
     background: #fff;
-    color: #000;
+    color: grey;
     border: 2px solid #fff;
 }
 
-.inputs-wrapper p {
+.inputs-wrapper p#text-tries {
     margin-top: 35px;
     color: #fff;
     font-size: 14px;
-    animation: text-move;
-    animation-duration: .5s;
+}
+
+.inputs-wrapper p.shake {
+    animation: text-move 0.3s;
+    animation-iteration-count: 2;
+    animation-timing-function: cubic-bezier(0.5,3,0.8,0.3);
 }
  
 @keyframes text-move {
