@@ -20,6 +20,9 @@ let globalTries;
 
 const btnGuess = document.getElementById("btnGuess");
 const btnStart = document.getElementById("btnStart");
+const textCongratulation = document.getElementById("text-congratulation");
+const textTries = document.getElementById("text-tries");
+const writeAnswer = document.getElementById("write-answer");
 
 document.getElementById("clue").innerHTML = "¡BIENVENIDO! Haz click en nuevo juego para iniciar la partida";
 
@@ -36,40 +39,40 @@ function start() {
 
     // Busco una palabra aleatoria dentro del grupo seleccionado
     randomWord = groupWords.words[Math.floor(Math.random() * groupWords.words.length)];
-    document.getElementById("text-congratulation").innerHTML = "";
+    textCongratulation.innerHTML = "";
     document.getElementById("clue").innerHTML =
         "¡Ya comenzó! Es una palabra de " + randomWord.length + " letras y las letras disponibles son: " + groupWords.letters.join(" - ") + ".";
-    document.getElementById("text-tries").innerHTML = "";
-    document.getElementById("write-answer").value = "";
+    textTries.innerHTML = "";
+    writeAnswer.value = "";
     toggleAction(true);
 }
 
 function shakeTries() {
-    document.getElementById("text-tries").classList.add("shake");
+    textTries.classList.add("shake");
     setTimeout(() => {
-        document.getElementById("text-tries").classList.remove("shake");
+        textTries.classList.remove("shake");
     }, 300);
 }
 
 function guessWord() {
-    let guess = document.getElementById("write-answer").value;
+    let guess = writeAnswer.value;
     if (guess == null) {
         return;
     }
 
     if (randomWord.toLowerCase() === guess.toLowerCase()) {
-        document.getElementById("text-congratulation").innerHTML = "¡Felicitaciones " + guess + " es la palabra correcta!";
+        textCongratulation.innerHTML = "¡Felicitaciones " + guess + " es la palabra correcta!";
         document.getElementById("clue").innerHTML = "¡Has ganado!";
-        document.getElementById("text-tries").innerHTML = "";
+        textTries.innerHTML = "";
         toggleAction(false);
     } else {
         if (globalTries == 0) {
-            document.getElementById("text-tries").innerHTML = "¡Te has quedado sin intentos! Solicitá una palabra nueva para continuar jugando";
+            textTries.innerHTML = "¡Te has quedado sin intentos! Solicitá una palabra nueva para continuar jugando";
             shakeTries();
-            document.getElementById("write-answer").value = "";
+            writeAnswer.value = "";
             toggleAction(false);
         } else {
-            document.getElementById("text-tries").innerHTML = "¡Upss! Parece que no es la palabra correcta. ¡Probá de nuevo! Te quedan " + globalTries + " intentos";
+            textTries.innerHTML = "¡Upss! Parece que no es la palabra correcta. ¡Probá de nuevo! Te quedan " + globalTries + " intentos";
             shakeTries();
         }
     }
