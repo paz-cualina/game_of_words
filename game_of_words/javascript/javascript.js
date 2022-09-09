@@ -24,7 +24,9 @@ const textCongratulation = document.getElementById("text-congratulation");
 const textTries = document.getElementById("text-tries");
 const writeAnswer = document.getElementById("write-answer");
 
-document.getElementById("clue").innerHTML = "¡BIENVENIDO! Haz click en nuevo juego para iniciar la partida";
+const gameSettings = JSON.parse(localStorage.getItem("gameSettings"));
+
+document.getElementById("clue").innerHTML = "¡Bienvenido, " + gameSettings.name + "! Haz click en nuevo juego para iniciar la partida";
 
 function toggleAction(isNewGame) {
     btnGuess.hidden = !isNewGame;
@@ -35,7 +37,20 @@ function start() {
     // Busco un grupo de palabras aleatorio dentro del objeto
     randomGroup = Math.floor(Math.random() * groups.length);
     groupWords = groups[randomGroup];
-    globalTries = 2;
+    switch (gameSettings.level) {
+        case "0":
+            globalTries = 3;
+            break;
+        case "1":
+            globalTries = 2;
+            break;
+        case "2":
+            globalTries = 1;
+            break;
+        default:
+            globalTries = 2;
+            break;
+    }
 
     // Busco una palabra aleatoria dentro del grupo seleccionado
     randomWord = groupWords.words[Math.floor(Math.random() * groupWords.words.length)];
@@ -72,13 +87,18 @@ function guessWord() {
             writeAnswer.value = "";
             toggleAction(false);
         } else {
-            textTries.innerHTML = "¡Upss! Parece que no es la palabra correcta. ¡Probá de nuevo! Te quedan " + globalTries + " intentos";
+            let tries = " intentos";
+            if (globalTries == 1) {
+                tries = " intento";
+            }
+            textTries.innerHTML = "¡Upss! Parece que no es la palabra correcta. ¡Probá de nuevo! Te quedan " + globalTries + tries;
             shakeTries();
         }
     }
 
     globalTries = globalTries - 1;
 }
+
 
 // Animación de reloj de arena
 function rotate() {

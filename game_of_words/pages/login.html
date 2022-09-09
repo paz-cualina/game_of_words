@@ -15,10 +15,16 @@
             <h2>¡Bienvenido a Game of Words!</h2>
             <p>¿Cómo te llamás?</p>
             <form action=".././index.html">
-                <input type="text"  placeholder="Nombre" class="input-login" required>
-                <button type="submit" id="btnLogin">¡COMENZAR!</button>
+                <input type="text" placeholder="Nombre" class="input-login" id="btnName" required>
+                <select name="level" id="btnLevel" required>
+                    <option value="0">Principiante</option>
+                    <option value="1">Intermedio</option>
+                    <option value="2">Avanzado</option>
+                  </select>
+                <button type="submit" id="btnLogin" onclick="saveToLocalStorage()">COMENZAR</button>
             </form>
         </div>
     </section>
+    <script src="../javascript/login.js"></script>
 </body>
 </html>
