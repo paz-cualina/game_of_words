@@ -75,7 +75,7 @@ function guessWord() {
     }
 
     if (randomWord.toLowerCase() === guess.toLowerCase()) {
-        textCongratulation.innerHTML = "¡Felicitaciones " + guess + " es la palabra correcta!";
+        textCongratulation.innerHTML = "¡Felicitaciones, " + guess + " es la palabra correcta!";
         document.getElementById("clue").innerHTML = "¡Has ganado!";
         textTries.innerHTML = "";
         toggleAction(false);
