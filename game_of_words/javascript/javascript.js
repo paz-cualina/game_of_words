@@ -26,7 +26,7 @@ const writeAnswer = document.getElementById("write-answer");
 
 const gameSettings = JSON.parse(localStorage.getItem("gameSettings"));
 
-document.getElementById("clue").innerHTML = "¡Bienvenido, " + gameSettings.name + "! Haz click en nuevo juego para iniciar la partida";
+document.getElementById("clue").innerHTML = "¡Bienvenido/a, " + gameSettings.name + "! Haz click en Nuevo Juego para iniciar la partida";
 
 function toggleAction(isNewGame) {
     btnGuess.hidden = !isNewGame;
@@ -39,14 +39,13 @@ function start() {
     groupWords = groups[randomGroup];
     switch (gameSettings.level) {
         case "0":
-            globalTries = 3;
+            globalTries = 2; //principiante
             break;
         case "1":
-            globalTries = 2;
+            globalTries = 1; //intermedio
             break;
         case "2":
-            globalTries = 1;
-            break;
+            globalTries = 0; //avanzado
         default:
             globalTries = 2;
             break;
