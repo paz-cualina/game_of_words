@@ -199,7 +199,12 @@ figure.logo {
 .login .login-container img {
    width: 60px;
    margin-bottom: 15px;
+   transform: rotateY(0deg);
+   transition: all 1s ease;
 }
+.login .login-container img:hover {
+    transform: rotateY(160deg);
+ }
 .login h2 {
     color: transparent;
     background: linear-gradient(#6ee37c, #6b8323);

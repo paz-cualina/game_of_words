@@ -38,16 +38,15 @@ function start() {
     randomGroup = Math.floor(Math.random() * groups.length);
     groupWords = groups[randomGroup];
     switch (gameSettings.level) {
-        case "0":
-            globalTries = 2; //principiante
+        case "2":
+            globalTries = 0; //avanzado
             break;
         case "1":
             globalTries = 1; //intermedio
             break;
-        case "2":
-            globalTries = 0; //avanzado
+        case "0":
         default:
-            globalTries = 2;
+            globalTries = 2; //principiante
             break;
     }
 
