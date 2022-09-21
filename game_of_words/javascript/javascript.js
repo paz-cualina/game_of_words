@@ -10,6 +10,10 @@ const groups = [
     {
         letters: ["E", "T", "R", "N", "F", "E"],
         words: ["ten", "tren", "tener", "frente"]
+    },
+    {
+        letters: ["T", "L", "A", "R", "A", "L"],
+        words: ["ala", "lata", "altar", "tallar"]
     }
 ];
 
