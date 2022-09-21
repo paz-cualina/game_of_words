@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="icon" type="image/jpg" href="../styles/img/question.ico"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>Game of Words</title>
 </head>
 <body>
-    <div class="wrapper-container">
+    <div class="wrapper-container animate__animated animate__fadeIn">
         <div class="main-title">
             <figure class="logo">
                 <img src="../styles/img/question.png">   
             </figure>
-            <h1>GAME OF WORDS</h1>
-            <h2>Un juego para adivinar palabras</h2>
+            <h1 class="animate__animated animate__bounce">GAME OF WORDS</h1>
+            <h2 class="animate__animated animate__flipInX">Un juego para adivinar palabras</h2>
             <img src="../styles/img/chain.png" class="chain-left">
             <img src="../styles/img/chain.png" class="chain-right">
         </div>
@@ -32,7 +33,7 @@
                 <input id="btnGuess" type="button" onclick="guessWord()" value="¡ADIVINAR!" hidden></input>
                 <input id="btnStart" type="button" onclick="start()" value="¡NUEVO JUEGO!"></input>
             </div>
-            <p id="text-tries"></p>
+            <p id="text-tries"></p>s
         </div>  
     </div>
     <script src="../javascript/javascript.js"></script>
