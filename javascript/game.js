@@ -50,8 +50,9 @@ function start() {
     // Busco una palabra aleatoria dentro del grupo seleccionado
     randomWord = groupWords.words[Math.floor(Math.random() * groupWords.words.length)];
     textCongratulation.innerHTML = "";
+    const letters = groupWords.letters.sort(() => 0.5 - Math.random()).join(" - ");
     document.getElementById("clue").innerHTML =
-        "¡Ya comenzó! Es una palabra de " + randomWord.length + " letras y las letras disponibles son: " + groupWords.letters.join(" - ") + ".";
+        "¡Ya comenzó! Es una palabra de " + randomWord.length + " letras y las letras disponibles son: " + letters + ".";
     textTries.innerHTML = "";
     writeAnswer.value = "";
     toggleAction(true);
