@@ -1,5 +1,5 @@
 if (!localStorage.getItem("gameSettings")) {
-    window.location.href = '../login.html';
+    window.location.href = '../index.html';
 }
 
 // Fetch
