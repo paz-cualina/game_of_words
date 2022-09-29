@@ -1,21 +1,14 @@
-const groups = [
-    {
-        letters: ["E", "O", "S", "T", "C"],
-        words: ["eco", "seco", "cesto"]
-    },
-    {
-        letters: ["L", "V", "A", "E", "L"],
-        words: ["ave", "leal", "valle"]
-    },
-    {
-        letters: ["E", "T", "R", "N", "F", "E"],
-        words: ["ten", "tren", "tener", "frente"]
-    },
-    {
-        letters: ["T", "L", "A", "R", "A", "L"],
-        words: ["ala", "lata", "altar", "tallar"]
-    }
-];
+if (!localStorage.getItem("gameSettings")) {
+    window.location.href = '../login.html';
+}
+
+// Fetch
+let groups;
+fetch("../data/data.json")
+    .then((response) => response.json())
+    .then((data) => {
+        groups = data;
+    });
 
 let groupWords;
 let randomWord;
@@ -100,7 +93,6 @@ function guessWord() {
 
     globalTries = globalTries - 1;
 }
-
 
 // Animación de reloj de arena
 function rotate() {
